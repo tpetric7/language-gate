@@ -13,6 +13,9 @@ tags:
   - language acquisition
 ---
 
+# Vokalformanten in L2 Deutsch
+
+**Teodor Petrič**
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -60,7 +63,6 @@ head(vergleich)
 
 ```
 
-
 ```{r}
 df0 <- read.csv("Deutsche_formants.Table.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8") 
 df1a <- read.csv("Monika_I_formants.Table.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8") 
@@ -82,7 +84,6 @@ df <- rbind(df0,df1a,df1b,df2,df3,df4,df5)
 head(df)
 
 ```
-
 
 # IPA syms
 
@@ -120,7 +121,6 @@ vergleich <- vergleich %>% cbind(ipavow) %>% select(-phonem_ipa_1, -phonem_ipa_2
 
 ```
 
-
 ```{r}
 # Deutsche Vokale
 vowel_lookup =
@@ -157,7 +157,6 @@ vowel_lookup =
 df$IPA <- vowel_lookup[df$vowel]
 
 ```
-
 
 # Vergleich mit IPA
 
@@ -200,7 +199,6 @@ ggplotly(graph4) %>% layout(showlegend = FALSE)
 
 
 ```
-
 
 ```{r}
 font = list(
@@ -247,7 +245,6 @@ webshot("tmp.html","vokalformanten_interaktiv_l1_l2_lang_kurz.pdf", delay =5, vw
 
 ```
 
-
 ```{r}
 vgl_pivot <- vergleich %>% 
   group_by(vokal) %>% 
@@ -278,7 +275,7 @@ ggplotly(graph5) %>% layout(showlegend = FALSE)
 
 ```
 
-Messungen von TP mit Praat-Script (👉 Matt Winn: https://github.com/mwinn83)
+Messungen von TP mit Praat-Script (👉 Matt Winn: <https://github.com/mwinn83>)
 
 ```{r}
 library(ggrepel)
@@ -310,7 +307,6 @@ ggplotly(graph6) %>% layout(showlegend = FALSE)
 
 ```
 
-
 ```{r}
 vowlist1 <- c("i:","I","ü:","Ü","e:","E","ö:","Ö","E:","a:","a","o:","O","u:","U") # unsere Symbole
 vowlist2 = c("i:","I","ue:","Ue","e:","E","oe:","Oe","E:","a:","a","o:","O","u:","U") # Umlautsymbole ersetzt
@@ -318,7 +314,6 @@ vowlist3 = c("i:","I","y:","Y","e:","E","2:","9","E:","a:","a","o:","O","u:","U"
 vowlist4 = c("i:","I","ii:","II","e:","E","ee:","EE","E:","a:","a","o:","O","u:","U") # Verdoppelung langer Vokale
 
 ```
-
 
 ```{r}
 vokale_agg <- vokale %>% 
@@ -359,7 +354,6 @@ library(ggrepel)
 
 ```
 
-
 ```{r}
 (graph <- vokale_agg %>% 
   group_by(vokal, l1_l2, label = vowel) %>% 
@@ -380,7 +374,6 @@ library(plotly)
 ggplotly(graph) %>% layout(showlegend = FALSE)
 
 ```
-
 
 ```{r}
 vgl_pivot <- vergleich %>% 
@@ -412,7 +405,6 @@ ggplotly(graph2) %>% layout(showlegend = FALSE)
 
 
 ```
-
 
 ```{r}
 vgl_pivot <- vergleich %>% 
@@ -466,7 +458,6 @@ dev.off()
 
 ```
 
-
 ```{r}
 library(phonR)
 
@@ -488,5 +479,3 @@ with(vokale, plotVowels(f1, f2, vokal, group = lange, pch.tokens = vokal, cex.to
 dev.off()
 
 ```
-
-
