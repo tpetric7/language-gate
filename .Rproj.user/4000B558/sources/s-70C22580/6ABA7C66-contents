@@ -16,7 +16,7 @@ editor_options:
 
 # Höflichkeit und Grundfrequenz
 
-***Teodor Petrič***
+### ***Teodor Petrič***
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -27,7 +27,9 @@ library(scales)
 
 ```
 
-Datensatz von: Bodo Winter Thema: Politeness and Pitch (F0)
+Datensatz von: Bodo Winter
+
+Thema: Politeness and Pitch (F0)
 
 (cf. <http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf>)
 
