@@ -1,0 +1,7 @@
+"0","library(phonR)"
+"0",""
+"0","par(mfrow = c(1, 1))"
+"0","with(vokale, plotVowels(f1, f2, vokal, group = lange, pch.tokens = vokal, cex.tokens = 1.2, "
+"0","    alpha.tokens = 0.3, plot.means = TRUE, pch.means = vokal, cex.means = 2, var.col.by = lange, "
+"0","    var.sty.by = lange, hull.fill = TRUE, hull.line = TRUE, fill.opacity = 0.1, "
+"0","    pretty = TRUE))"

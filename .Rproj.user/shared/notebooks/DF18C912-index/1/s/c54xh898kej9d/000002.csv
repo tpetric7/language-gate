@@ -1,0 +1,13 @@
+"0","vokale_agg <- vokale %>% "
+"0","  group_by(vokal, lange, l1_l2) %>% "
+"0","  summarise(f1_avg = mean(f1),"
+"0","            f2_avg = mean(f2),"
+"0","            dauer_avg = mean(dauer))"
+"2","`summarise()` has grouped output by 'vokal', 'lange'. You can override using the `.groups` argument.
+"
+"0","ipavow2 = c(a,A,E,e,EE,I,i,O,OE,o,oe,U,Y,u,y) %>%  as_tibble() %>% rename(vowel = value)"
+"0",""
+"0","vokale_agg1 <- vokale_agg %>% filter(l1_l2 == ""L1"") %>% cbind(ipavow2)"
+"0","vokale_agg2 <- vokale_agg %>% filter(l1_l2 == ""L2"") %>% cbind(ipavow2)"
+"0","vokale_agg <- rbind(vokale_agg1, vokale_agg2) %>% as_tibble()"
+"0","head(vokale_agg)"
