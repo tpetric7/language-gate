@@ -3,7 +3,7 @@
     "path": "D:/Users/teodo/Documents/R/raj2021/content/post/2021-06-21-politeness-and-pitch/index.Rmd",
     "project_path": "content/post/2021-06-21-politeness-and-pitch/index.Rmd",
     "type": "r_markdown",
-    "hash": "1312220817",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1624282663687.0,
@@ -12,16 +12,19 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "11,0",
+        "cursorPosition": "23,0",
         "scrollLine": "0",
-        "docOutlineVisible": "1"
+        "docOutlineVisible": "1",
+        "rmdVisualMode": "true",
+        "rmdVisualModeLocation": "321:331",
+        "rmdVisualWrapConfigured": "true"
     },
     "folds": "",
-    "lastKnownWriteTime": 1624288113,
+    "lastKnownWriteTime": 1624289130,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1624288113749,
+    "last_content_update": 1624289130069,
     "read_only": false,
     "read_only_alternatives": []
 }

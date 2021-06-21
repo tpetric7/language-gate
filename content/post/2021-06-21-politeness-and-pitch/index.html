@@ -9,6 +9,9 @@ tags:
   - R Markdown
   - regression
 slug: politeness-and-pitch
+editor_options: 
+  markdown: 
+    wrap: 110
 ---
 
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
@@ -16,6 +19,7 @@ slug: politeness-and-pitch
 
 <div id="höflichkeit-und-grundfrequenz" class="section level1">
 <h1>Höflichkeit und Grundfrequenz</h1>
+<p><strong><em>Teodor Petrič</em></strong></p>
 <p>Datensatz von: Bodo Winter Thema: Politeness and Pitch (F0)</p>
 <p>(cf. <a href="http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf" class="uri">http://www.bodowinter.com/tutorial/bw_LME_tutorial1.pdf</a>)</p>
 <p>(cf. <a href="https://bodowinter.com/tutorial/bw_LME_tutorial.pdf" class="uri">https://bodowinter.com/tutorial/bw_LME_tutorial.pdf</a>)</p>
@@ -49,8 +53,8 @@ politeness &lt;- read.csv(&quot;politeness_data.csv&quot;)</code></pre>
 ## $ scenario  &lt;int&gt; 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 1, 1, 2, 2, 3, 3, ~
 ## $ attitude  &lt;chr&gt; &quot;pol&quot;, &quot;inf&quot;, &quot;pol&quot;, &quot;inf&quot;, &quot;pol&quot;, &quot;inf&quot;, &quot;pol&quot;, &quot;inf&quot;, &quot;pol~
 ## $ frequency &lt;dbl&gt; 213.3, 204.5, 285.1, 259.7, 203.9, 286.9, 250.8, 276.8, 231.~</code></pre>
-<p>Am Experiment nahmen 6 Versuchspersonen teil (F1, …, M7). Von jeder
-Versuchsperson (subject) haben wir 14 Messpunkte (n = 14).</p>
+<p>Am Experiment nahmen 6 Versuchspersonen teil (F1, …, M7). Von jeder Versuchsperson (subject) haben wir 14
+Messpunkte (n = 14).</p>
 <pre class="r"><code>politeness %&gt;% 
   count(subject)</code></pre>
 <pre><code>##   subject  n
@@ -70,8 +74,8 @@ Versuchsperson (subject) haben wir 14 Messpunkte (n = 14).</p>
 ## 4      M3      M 14
 ## 5      M4      M 14
 ## 6      M7      M 14</code></pre>
-<p>Pro Verhaltensweise stehen uns 42 Messpunkte zur Verfügung, um unsere (unten
-folgende) Hypothese zu überprüfen.</p>
+<p>Pro Verhaltensweise stehen uns 42 Messpunkte zur Verfügung, um unsere (unten folgende) Hypothese zu
+überprüfen.</p>
 <pre class="r"><code>politeness %&gt;% 
   count(attitude)</code></pre>
 <pre><code>##   attitude  n
@@ -83,15 +87,15 @@ folgende) Hypothese zu überprüfen.</p>
 <pre><code>## Warning in mean.default(., frequency): argument is not numeric or logical:
 ## returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
-<p>“NA”: In unserer Datenreihe fehlt eine Frequenz. Wir entfernen diese Datenzeile,
-um die durchschnittliche Frequenz (mean) zu berechnen.</p>
+<p>“NA”: In unserer Datenreihe fehlt eine Frequenz. Wir entfernen diese Datenzeile, um die durchschnittliche
+Frequenz (mean) zu berechnen.</p>
 <pre class="r"><code>politeness %&gt;% 
   drop_na(frequency) %&gt;%
   summarise(av_freq = mean(frequency))</code></pre>
 <pre><code>##    av_freq
 ## 1 193.5819</code></pre>
-<p>Wir haben gerade die Durchschnittsfrequenz für alle Versuchspersonen berechnet.
-Berechnen wir sie nun getrennt nach weiblichen und männlichen Versuchspersonen!</p>
+<p>Wir haben gerade die Durchschnittsfrequenz für alle Versuchspersonen berechnet. Berechnen wir sie nun getrennt
+nach weiblichen und männlichen Versuchspersonen!</p>
 <pre class="r"><code>politeness %&gt;% 
   drop_na(frequency) %&gt;%
   group_by(gender) %&gt;% 
@@ -101,12 +105,11 @@ Berechnen wir sie nun getrennt nach weiblichen und männlichen Versuchspersonen!
 ##   &lt;chr&gt;    &lt;dbl&gt;
 ## 1 F         247.
 ## 2 M         139.</code></pre>
-<p>Erwartungsgemäß ist der Durchschnittswert bei Frauen höher als bei Männern:
-Frauen haben meist eine höhere Stimme als Männer.</p>
-<p>Ein Blick auf die Durchschnittsfrequenzen bei höflicher und informeller
-Sprechweise: In unserer Stichprobe mit 6 Versuchspersonen (je 14
-Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz, und zwar 202,59
-- 184,36.</p>
+<p>Erwartungsgemäß ist der Durchschnittswert bei Frauen höher als bei Männern: Frauen haben meist eine höhere
+Stimme als Männer.</p>
+<p>Ein Blick auf die Durchschnittsfrequenzen bei höflicher und informeller Sprechweise: In unserer Stichprobe mit
+6 Versuchspersonen (je 14 Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz, und zwar 202,59 -
+184,36.</p>
 <pre class="r"><code>politeness %&gt;% 
   drop_na() %&gt;% 
   group_by(attitude) %&gt;% 
@@ -126,28 +129,23 @@ Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz, und zwar 202,59
 </div>
 <div id="hypothesen" class="section level2">
 <h2>3. Hypothesen</h2>
-<p>H0: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem oder
-informellem Sprechverhalten (attitude) ist gleich.</p>
-<p>H1: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem
-Sprechverhalten unterscheidet sich vom informellen.</p>
-<p>Nach unserem bisherigen Wissen erwarten wir, dass unsere Daten die Hypothese H1
-bestätigen werden.</p>
-<p>Das überprüfen wir zunächst mit einem t-Test, anschließend mit einer linearen
-Regression.</p>
+<p>H0: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem oder informellem Sprechverhalten (attitude)
+ist gleich.</p>
+<p>H1: Der durchschnittliche Grundfrequenzverlauf (F0) bei höflichem Sprechverhalten unterscheidet sich vom
+informellen.</p>
+<p>Nach unserem bisherigen Wissen erwarten wir, dass unsere Daten die Hypothese H1 bestätigen werden.</p>
+<p>Das überprüfen wir zunächst mit einem t-Test, anschließend mit einer linearen Regression.</p>
 </div>
 <div id="test" class="section level2">
 <h2>4. Test</h2>
 <p>t-Test</p>
-<p>Zunächst ein Blick auf die Durchschnittsfrequenzen bei höflicher und informeller
-Sprechweise. In unserer Stichprobe mit 6 Versuchspersonen (je 14
-Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz.</p>
-<p>Gemäß Hypothese H1 ist der Unterschied nicht zufällig entstanden, sondern kann
-auf die Gesamtpopulation deutscher Sprecher verallgemeinert werden.</p>
-<p>Nicht so gemäß Hypothese H0: Der Mittelwertunterschied zwischen den Stichproben
-kann zufällig entstanden sein, denn wenn wir eine andere Stichprobe genommen
-hätten, wäre der Unterschied vielleicht gleich Null gewesen.</p>
-<p>Mit statistischen Tests können wir diese beiden Hypothesen überprüfen. Einer
-davon ist der t-Test.</p>
+<p>Zunächst ein Blick auf die Durchschnittsfrequenzen bei höflicher und informeller Sprechweise. In unserer
+Stichprobe mit 6 Versuchspersonen (je 14 Frequenzmessungen) zeigt sich ein Unterschied von etwa 18,2 Hz.</p>
+<p>Gemäß Hypothese H1 ist der Unterschied nicht zufällig entstanden, sondern kann auf die Gesamtpopulation
+deutscher Sprecher verallgemeinert werden.</p>
+<p>Nicht so gemäß Hypothese H0: Der Mittelwertunterschied zwischen den Stichproben kann zufällig entstanden sein,
+denn wenn wir eine andere Stichprobe genommen hätten, wäre der Unterschied vielleicht gleich Null gewesen.</p>
+<p>Mit statistischen Tests können wir diese beiden Hypothesen überprüfen. Einer davon ist der t-Test.</p>
 <pre class="r"><code>politeness %&gt;% 
   drop_na() %&gt;% 
   group_by(attitude) %&gt;% 
@@ -207,10 +205,9 @@ t.test(polite, informal)</code></pre>
 ## sample estimates:
 ## mean of x mean of y 
 ##  184.3561  202.5881</code></pre>
-<p>Die lineare Regression hat den großen Vorteil, dass man mehr als eine
-unabhängige Variable (Prädiktor) verwenden kann, um die Hypothese zu testen. Wir
-wählen Geschlecht (gender) und Sprechverhalten (attitude) als unabhängige
-Variablen, der Grundfrequenzverlauf (frequency) ist die abhängige Variable.</p>
+<p>Die lineare Regression hat den großen Vorteil, dass man mehr als eine unabhängige Variable (Prädiktor)
+verwenden kann, um die Hypothese zu testen. Wir wählen Geschlecht (gender) und Sprechverhalten (attitude) als
+unabhängige Variablen, der Grundfrequenzverlauf (frequency) ist die abhängige Variable.</p>
 <pre class="r"><code>politeness %&gt;% 
   drop_na %&gt;% 
   lm(frequency ~ attitude + gender, data = .) %&gt;% 
@@ -234,14 +231,12 @@ Variablen, der Grundfrequenzverlauf (frequency) ist die abhängige Variable.</p>
 ## Residual standard error: 35.68 on 80 degrees of freedom
 ## Multiple R-squared:  0.7109, Adjusted R-squared:  0.7037 
 ## F-statistic: 98.38 on 2 and 80 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Die lineare Regression bestätigt die Hypothese H1: F(2;80 = 98,38; p &lt; 0,001).
-Die Versuchspersonen sprechen demnach in einer anderen Tonlage, wenn sie höflich
-sprechen, und zwar um ca. 19,5 Hz tiefer als wenn sie informell sprechen (p =
-0,0146). Außerdem bestätigt die lineare Regression (erwartungsgemäß) auch, dass
-die männlichen Versuchspersonen mit einer tieferen Stimme sprechen als die
-weiblichen, und zwar um durchschnittlich 108 Hz. Der R^2-Wert beträgt 0,71
-(d.h. etwa 71%). Das bedeutet, dass mit dem Regressionsergebnis ca. 71% der
-Variabilität unserer Daten erklärt wird.</p>
+<p>Die lineare Regression bestätigt die Hypothese H1: F(2;80 = 98,38; p &lt; 0,001). Die Versuchspersonen sprechen
+demnach in einer anderen Tonlage, wenn sie höflich sprechen, und zwar um ca. 19,5 Hz tiefer als wenn sie
+informell sprechen (p = 0,0146). Außerdem bestätigt die lineare Regression (erwartungsgemäß) auch, dass die
+männlichen Versuchspersonen mit einer tieferen Stimme sprechen als die weiblichen, und zwar um
+durchschnittlich 108 Hz. Der R^2-Wert beträgt 0,71 (d.h. etwa 71%). Das bedeutet, dass mit dem
+Regressionsergebnis ca. 71% der Variabilität unserer Daten erklärt wird.</p>
 <pre class="r"><code>politeness %&gt;% 
   ggplot(aes(attitude, frequency, group = attitude, fill = attitude)) +
   geom_boxplot() +
@@ -270,10 +265,8 @@ library(effects)</code></pre>
 </div>
 <div id="schluss" class="section level2">
 <h2>5. Schluss</h2>
-<p>Die Regressionsanalyse hat H1 bestätigt, d.h. die Grundfrequenz beim höflichen
-Sprechen unterscheidet sich vom informellen Sprechen. Beim höflichen Sprechen
-sprachen die Versuchspersonen mit einer durchschnittlich 19,5 Hz tieferen Stimme
-(bei den weiblichen Versuchspersonen ca. 27 Hz, bei den männlichen mehr als 11
-Hz).</p>
+<p>Die Regressionsanalyse hat H1 bestätigt, d.h. die Grundfrequenz beim höflichen Sprechen unterscheidet sich vom
+informellen Sprechen. Beim höflichen Sprechen sprachen die Versuchspersonen mit einer durchschnittlich 19,5 Hz
+tieferen Stimme (bei den weiblichen Versuchspersonen ca. 27 Hz, bei den männlichen mehr als 11 Hz).</p>
 </div>
 </div>
