@@ -2,13 +2,13 @@
 title: Politeness and Pitch
 author: Teodor Petrič
 date: '2021-06-21'
-slug: politeness-and-pitch
 categories:
   - R
 tags:
+  - plot
   - R Markdown
   - regression
-  - plot
+slug: politeness-and-pitch
 ---
 
 
