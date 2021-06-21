@@ -1,7 +1,0 @@
-"0","vgl_pivot <- vergleich %>% "
-"0","  group_by(vokal) %>% "
-"0","  pivot_longer(f1_l1:dauer_l2, names_to = ""category"", values_to = ""value"") %>% "
-"0","  separate(category, into = c(""category"", ""l1_l2"")) %>% "
-"0","  drop_na() %>% "
-"0","  pivot_wider(names_from = category, values_from = value)"
-"0","head(vgl_pivot)"
