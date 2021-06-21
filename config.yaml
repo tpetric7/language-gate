@@ -1,6 +1,6 @@
 baseurl: /
 languageCode: en-us
-title: A Hugo website
+title: Language gate
 theme: hugo-lithium
 googleAnalytics: ''
 disqusShortname: ''
@@ -17,9 +17,9 @@ menu:
     - name: About
       url: /about/
     - name: GitHub
-      url: https://github.com/rstudio/blogdown
+      url: https://github.com/tpetric7/raj2021
     - name: Twitter
-      url: https://twitter.com/rstudio
+      url: https://twitter.com/TPetric
 params:
   MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
   MathJaxVersion: 2.7.5
