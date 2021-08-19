@@ -78,7 +78,7 @@ Funkcija *read_xlsx()* ali *read_excel()* omogoča odpiranje Excelove preglednic
 library(readxl)
 excel = read_xlsx("data/S03_Vokalformanten_Diagramme.xlsx", sheet = "A1-4_alle")
 head(excel) %>% 
-  kable_classic(full_width = T, html_font = "Cambria")
+ rmarkdown::paged_table()
 
 ```
 
