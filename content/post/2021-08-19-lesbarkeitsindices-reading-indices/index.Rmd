@@ -1,8 +1,8 @@
 ---
-title: Lesbarkeitsindices (Reading indices)
+title: Reading ease scores
 author: Teodor Petrič
 date: '2021-08-19'
-slug: lesbarkeitsindices-reading-indices
+slug: reading-ease-scores
 categories:
   - R
 tags:
@@ -49,6 +49,14 @@ knitr::include_graphics(
   "pictures/Lesbarkeitsindex Flesch Ease deutsch.png")
 
 ```
+
+```{r}
+flres_de = readxl::read_xlsx("data/Flesch-Reading-Ease-Score-deutsch.xlsx")
+flres_de %>% 
+  mutate(`Verständlich für` = replace_na(`Verständlich für`," ")) %>%
+  rmarkdown::paged_table()
+```
+
 
 ## Romane (deutsche oder ins Deutsche übersetzte)
 
